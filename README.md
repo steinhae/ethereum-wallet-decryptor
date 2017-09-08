@@ -1,1 +1,1 @@
-ethereum_wallet_decrypter
+# ethereum-wallet-decryptor
