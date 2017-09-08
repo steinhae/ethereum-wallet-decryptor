@@ -1,0 +1,27 @@
+apply plugin: 'java'
+
+group 'wallet-encrypter'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'Main'
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile 'org.web3j:core:2.3.1'
+    compile 'com.google.code.gson:gson:2.8.1'
+    compile group: 'commons-cli', name: 'commons-cli', version: '1.4'
+}
